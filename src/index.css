@@ -2,41 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* GeoHerbs Design System - Natural, trustworthy, and modern
+All colors MUST be HSL for proper theming.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Natural Background Palette */
+    --background: 45 56% 96%;           /* Soft cream */
+    --foreground: 94 70% 12%;           /* Dark forest */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;                  /* Pure white */
+    --card-foreground: 94 70% 12%;      /* Dark forest */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 94 70% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand Colors - Deep Forest Green */
+    --primary: 94 70% 20%;              /* Deep forest green */
+    --primary-foreground: 45 56% 96%;   /* Soft cream */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Warm Earth Brown */
+    --secondary: 25 76% 31%;            /* Warm earth brown */
+    --secondary-foreground: 45 56% 96%; /* Soft cream */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Natural tones */
+    --muted: 45 25% 88%;                /* Light beige */
+    --muted-foreground: 94 30% 35%;     /* Medium forest */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Fresh Leaf Green */
+    --accent: 122 39% 49%;              /* Fresh leaf green */
+    --accent-foreground: 0 0% 100%;     /* White */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 45 25% 85%;               /* Light natural border */
+    --input: 45 25% 90%;                /* Input background */
+    --ring: 94 70% 20%;                 /* Primary ring */
 
-    --radius: 0.5rem;
+    /* Design System Enhancements */
+    --radius: 0.75rem;                  /* Softer radius */
+    
+    /* Custom Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(122 39% 35%));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(122 39% 25%) 100%);
+    --gradient-earth: linear-gradient(180deg, hsl(var(--secondary)) 0%, hsl(25 50% 25%) 100%);
+    
+    /* Shadows with natural feel */
+    --shadow-natural: 0 10px 30px -10px hsl(var(--primary) / 0.15);
+    --shadow-card: 0 4px 20px -4px hsl(var(--primary) / 0.1);
+    --shadow-floating: 0 20px 60px -10px hsl(var(--primary) / 0.2);
+    
+    /* Typography scale */
+    --font-hero: 3.5rem;
+    --font-heading: 2.25rem;
+    --font-subheading: 1.5rem;
+    
+    /* Spacing for consistency */
+    --section-padding: 5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -56,41 +80,39 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode with natural earth tones */
+    --background: 94 40% 8%;            /* Dark forest */
+    --foreground: 45 56% 96%;           /* Soft cream */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 94 30% 12%;                 /* Dark forest card */
+    --card-foreground: 45 56% 96%;      /* Soft cream */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 94 30% 12%;
+    --popover-foreground: 45 56% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 122 39% 55%;             /* Bright leaf green */
+    --primary-foreground: 94 40% 8%;    /* Dark forest */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 25 50% 25%;            /* Deep earth brown */
+    --secondary-foreground: 45 56% 96%; /* Soft cream */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 94 20% 18%;                /* Dark muted */
+    --muted-foreground: 45 25% 70%;     /* Light beige */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 122 39% 55%;              /* Bright leaf green */
+    --accent-foreground: 94 40% 8%;     /* Dark forest */
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 94 20% 25%;               /* Dark border */
+    --input: 94 20% 20%;                /* Dark input */
+    --ring: 122 39% 55%;                /* Accent ring */
+    
+    /* Update gradients for dark mode */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(122 39% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(94 40% 8%) 0%, hsl(94 30% 15%) 100%);
+    --gradient-earth: linear-gradient(180deg, hsl(var(--secondary)) 0%, hsl(25 40% 20%) 100%);
   }
 }
 
@@ -100,6 +122,64 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Custom utility classes */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .primary-gradient {
+    background: var(--gradient-primary);
+  }
+  
+  .earth-gradient {
+    background: var(--gradient-earth);
+  }
+  
+  .shadow-natural {
+    box-shadow: var(--shadow-natural);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-floating {
+    box-shadow: var(--shadow-floating);
+  }
+  
+  .section-padding {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Animation utilities */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
