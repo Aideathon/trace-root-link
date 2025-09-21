@@ -40,7 +40,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-up">
             <Button variant="accent" size="xl" className="group">
               <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-              Explore Demo
+              Explore Products
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button variant="outline" size="xl" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
