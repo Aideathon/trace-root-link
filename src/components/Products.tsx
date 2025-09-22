@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { QrCode, MapPin, Calendar, Shield, Eye } from "lucide-react";
+import { QrCode, MapPin, Calendar, Shield, Eye, AlertTriangle, Clock } from "lucide-react";
 
 import ashwagandhaImg from "@/assets/products/ashwagandha.jpg";
 import brahmiImg from "@/assets/products/brahmi.jpg";
@@ -33,7 +33,7 @@ const products = [
     description: "Fresh organic Brahmi leaves for cognitive enhancement and mental clarity.",
     origin: "Kerala, India",
     harvestDate: "November 2024",
-    verificationStatus: "verified",
+    verificationStatus: "pending",
     qrCode: "BRA002-2024-KER",
     benefits: ["Memory Enhancement", "Mental Clarity", "Focus"]
   },
@@ -55,7 +55,7 @@ const products = [
     description: "Fresh neem leaves with natural antibacterial and purifying properties.",
     origin: "Maharashtra, India",
     harvestDate: "October 2024",
-    verificationStatus: "verified",
+    verificationStatus: "unverified",
     qrCode: "NEE004-2024-MAH",
     benefits: ["Skin Health", "Natural Purifier", "Immunity"]
   },
@@ -77,7 +77,7 @@ const products = [
     description: "Premium Shatavari roots for women's health and hormonal balance.",
     origin: "Himachal Pradesh, India",
     harvestDate: "August 2024",
-    verificationStatus: "verified",
+    verificationStatus: "pending",
     qrCode: "SHA006-2024-HP",
     benefits: ["Women's Health", "Hormonal Balance", "Vitality"]
   },
@@ -99,7 +99,7 @@ const products = [
     description: "Organic fresh ginger roots for digestive health and natural warmth.",
     origin: "Karnataka, India",
     harvestDate: "October 2024",
-    verificationStatus: "verified",
+    verificationStatus: "unverified",
     qrCode: "GIN008-2024-KAR",
     benefits: ["Digestive Health", "Anti-nausea", "Warming"]
   },
@@ -121,7 +121,7 @@ const products = [
     description: "Fresh Guduchi stems for immune support and liver health enhancement.",
     origin: "West Bengal, India",
     harvestDate: "November 2024",
-    verificationStatus: "verified",
+    verificationStatus: "pending",
     qrCode: "GUD010-2024-WB",
     benefits: ["Immunity", "Liver Health", "Detox"]
   }
@@ -130,7 +130,25 @@ const products = [
 const Products = () => {
   const handleVerifyProduct = (product: any) => {
     // Simulated verification - in real app would open QR scanner or verification modal
-    alert(`Verifying ${product.name}\nQR Code: ${product.qrCode}\nStatus: Blockchain Verified ✓`);
+    const statusMessage = product.verificationStatus === "verified" 
+      ? `✓ Blockchain Verified`
+      : product.verificationStatus === "pending"
+      ? `⏳ Verification Pending`
+      : `❌ Not Verified`;
+    alert(`Verifying ${product.name}\nQR Code: ${product.qrCode}\nStatus: ${statusMessage}`);
+  };
+
+  const getVerificationBadge = (status: string) => {
+    switch (status) {
+      case "verified":
+        return { icon: Shield, text: "Verified", className: "bg-green-100 text-green-800 border-green-200" };
+      case "pending":
+        return { icon: Clock, text: "Pending", className: "bg-yellow-100 text-yellow-800 border-yellow-200" };
+      case "unverified":
+        return { icon: AlertTriangle, text: "Unverified", className: "bg-red-100 text-red-800 border-red-200" };
+      default:
+        return { icon: Shield, text: "Unknown", className: "bg-gray-100 text-gray-800 border-gray-200" };
+    }
   };
 
   return (
@@ -161,10 +179,15 @@ const Products = () => {
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-3 right-3">
-                  <Badge variant="secondary" className="bg-accent text-accent-foreground">
-                    <Shield className="w-3 h-3 mr-1" />
-                    Verified
-                  </Badge>
+                  {(() => {
+                    const badge = getVerificationBadge(product.verificationStatus);
+                    return (
+                      <Badge className={`${badge.className} border`}>
+                        <badge.icon className="w-3 h-3 mr-1" />
+                        {badge.text}
+                      </Badge>
+                    );
+                  })()}
                 </div>
                 <div className="absolute top-3 left-3">
                   <Button
@@ -209,10 +232,25 @@ const Products = () => {
                   ))}
                 </div>
 
-                {/* QR Code */}
-                <div className="bg-muted/50 p-2 rounded text-center">
-                  <p className="text-xs text-muted-foreground mb-1">QR Code</p>
-                  <p className="text-xs font-mono text-primary">{product.qrCode}</p>
+                {/* Barcode-style QR Code */}
+                <div className="bg-muted/50 p-3 rounded text-center">
+                  <p className="text-xs text-muted-foreground mb-2">Product Barcode</p>
+                  <div className="bg-white p-2 rounded border inline-block">
+                    <div className="flex items-center justify-center gap-px mb-1">
+                      {/* Generate barcode-like pattern */}
+                      {Array.from({ length: 12 }, (_, i) => (
+                        <div
+                          key={i}
+                          className="bg-black"
+                          style={{
+                            width: Math.random() > 0.5 ? '2px' : '1px',
+                            height: '20px'
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <p className="text-xs font-mono text-gray-700">{product.qrCode}</p>
+                  </div>
                 </div>
 
                 {/* Action Button */}
