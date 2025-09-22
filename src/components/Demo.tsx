@@ -19,10 +19,10 @@ const Demo = () => {
   const demoSteps = [
     {
       title: "Farmer Logs Harvest",
-      description: "Rajesh Kumar logs his turmeric harvest from Mysore farm",
+      description: "Kishor logs his turmeric harvest from vellore farm",
       data: {
-        farmer: "Rajesh Kumar",
-        location: "Mysore, Karnataka",
+        farmer: "Kishor",
+        location: "vellore,Tamil Nadu",
         product: "Organic Turmeric",
         quantity: "250 kg",
         date: "March 15, 2024",
@@ -33,7 +33,7 @@ const Demo = () => {
       title: "Processing & Verification",
       description: "Batch processed and verified by certified manufacturer",
       data: {
-        processor: "Ayur Naturals Pvt Ltd",
+        processor: "Venkatesh Pvt Ltd",
         batchId: "TUR-MYS-240315-001",
         processing: "Dried & Powdered",
         quality: "Certified Organic",
@@ -48,7 +48,7 @@ const Demo = () => {
         product: "Pure Turmeric Powder 100g",
         verification: "100% Authentic",
         journey: "Farm to Product in 5 days",
-        farmer: "Rajesh Kumar, Mysore",
+        farmer: "Kishor,vellore",
         certifications: "Organic, Fair Trade",
         rating: "4.9/5 stars"
       }
