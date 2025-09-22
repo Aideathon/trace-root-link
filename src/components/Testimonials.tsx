@@ -5,7 +5,7 @@ import farmersPortrait from "@/assets/farmers-portrait.jpg";
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Rajesh Kumar",
+      name: "Udhaya Kumar.S",
       role: "Turmeric Farmer, Mysore",
       image: farmersPortrait,
       quote: "GeoHerbs changed my life! I now get fair prices for my organic turmeric and can track payments in real-time. My family's income has increased by 40% this year.",
@@ -13,14 +13,14 @@ const Testimonials = () => {
       category: "farmer"
     },
     {
-      name: "Dr. Priya Sharma",
+      name: "Dr.Afreen Fathima",
       role: "Ayurvedic Practitioner & Consumer",
       quote: "As a practitioner, I need authentic herbs for my patients. GeoHerbs gives me complete confidence in the quality and source of every product I prescribe.",
       rating: 5,
       category: "consumer"
     },
     {
-      name: "Arjun Enterprises",
+      name: "Kutty Krishna",
       role: "Ayurvedic Manufacturer",
       quote: "The transparency and traceability GeoHerbs provides has improved our export quality standards. Our international clients trust our products more than ever.",
       rating: 5,
