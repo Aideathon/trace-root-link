@@ -20,7 +20,7 @@ const Testimonials = () => {
       category: "consumer"
     },
     {
-      name: "Kutty Krishna",
+      name: "Krishna",
       role: "Ayurvedic Manufacturer",
       quote: "The transparency and traceability GeoHerbs provides has improved our export quality standards. Our international clients trust our products more than ever.",
       rating: 5,
